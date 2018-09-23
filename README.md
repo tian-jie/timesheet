@@ -26,7 +26,21 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Businsess Description
+This is an application in order to log employee's timesheet and expense, which helps company to clearly understand the cost and estimate the trends for a project.
+
+functions: 
+- employee need to input exactly time for a project each day
+- the data input just need to by project, not by task.
+- accounting function will generate project's cost by month, maybe a visual chart will also support your desision maker.
+
+Technical Description:
+
+- [NestJs](https://github.com/nestjs/nest) 
+- [MongoDB](https://github.com/mongodb/mongo)
+- render engin: hbs
+- suggested dev tool: Vs Code (using debug directly)
+- code version control: [github](https://github.com)
 
 ## Installation
 
