@@ -1,5 +1,9 @@
-export class TimesheeView {
+import { Timestamp } from "typeorm";
+
+export class TimesheetView {
     readonly userId: string;
-    readonly date: number;
-    readonly unit: string;
+    readonly date: string;
+    readonly project: number;
+    readonly unit: number;
+    readonly lastUpdated: number;
 }

@@ -4,5 +4,6 @@
     "port": 27017,
     "database": "timesheet",
     "entities": ["./src/**/**.entity{.ts,.js}"],
-    "synchronize": true
+    "synchronize": true,
+    "useNewUrlParser": true
 }

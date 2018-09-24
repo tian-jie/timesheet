@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+
 
 @Entity()
 export class Timesheet {
@@ -8,14 +9,17 @@ export class Timesheet {
     @Column({ length: 100 })
     userId: string;
 
-    @Column()
-    date: Date;
+    @Column({ length: 20 })
+    date: string;
 
-    @Column()
+    @Column('int')
+    project: number;
+
+    @Column('int')
     unit: number;
 
-    @Column()
-    lastUpdatedTime: Date;
+    @Column('long')
+    lastUpdated: number;
 
     
 }

@@ -2,6 +2,8 @@ import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Timesheet } from '../entities/timesheet.entity'
+import { TimesheetView } from '../viewModels/Timesheet.viewmodel'
+import { CycleObject } from '../common/CycleObject'
 
 @Injectable()
 export class TimesheetService {
@@ -12,13 +14,33 @@ export class TimesheetService {
 
     }
 
-    // async findByUser(userid: string): Promise<Timesheet[]> {
-    //     return await this.timesheetRepository.find({ userId: userid });
-    // }
-
-    async findByUser(userid: string): Promise<any[]> {
-        return this.fakeUnits();
+    async findByUser(userid: string): Promise<TimesheetView[]> {
+        var timesheet = await this.timesheetRepository.find({ userId: userid });
+        var timesheetView = [];
+        // for(var i in timesheet){
+        //     var t = timesheet[i];
+        //     timesheetView.push({
+        //        userId: t.userId,
+        //        date: t.date,
+        //        unit: t.unit 
+        //     });
+        // }
+        console.debug(timesheet);
+        timesheet.forEach(function(item, index){
+            timesheetView.push({
+                userId: item.userId,
+                date: item.date,
+                project: item.project,
+                unit: item.unit,
+                lastUpdated: item.lastUpdated
+             });
+        });
+        return timesheetView;
     }
+
+    // async findByUser(userid: string): Promise<any[]> {
+    //     return this.fakeUnits();
+    // }
 
     fakeUnits() {
         return [{
@@ -39,4 +61,18 @@ export class TimesheetService {
             unit: 8
         }];
     }
+
+    getAvaliableCycles(): any[]{
+        var cycles = [];
+        cycles.push(new CycleObject(new Date()).nextCycles(-1).toString());
+        cycles.push(new CycleObject(new Date()).toString());
+        cycles.push(new CycleObject(new Date()).nextCycles(1).toString());
+        cycles.push(new CycleObject(new Date()).nextCycles(2).toString());
+        cycles.push(new CycleObject(new Date()).nextCycles(3).toString());
+        cycles.push(new CycleObject(new Date()).nextCycles(4).toString());
+
+        return cycles;
+    }
+
+
 }
