@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Timesheet } from '../entities/timesheet.entity'
-import { TimesheetView } from '../viewModels/Timesheet.viewmodel'
+import { TimesheetView } from '../viewModels/timesheet.viewmodel'
 import { CycleObject } from '../common/CycleObject'
 
 @Injectable()

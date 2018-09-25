@@ -1,6 +1,6 @@
 {
     "type": "mongodb",
-    "host": "localhost",
+    "host": "vm-online.com",
     "port": 27017,
     "database": "timesheet",
     "entities": ["./src/**/**.entity{.ts,.js}"],

@@ -1,6 +1,7 @@
-import { Controller, Get, Post, HttpCode, Param, Render, Res } from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Param, Render, Res, UseGuards, Req } from '@nestjs/common';
 import { TimesheetService } from '../services/timesheet.service';
 import { TimesheetView } from '../viewModels/Timesheet.viewmodel'
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('timesheet')
 export class TimesheetController {
@@ -21,7 +22,9 @@ export class TimesheetController {
     }
 
     @Get('avaliableCycles')
-    avaliableCycles(): any[]{
+    @UseGuards(AuthGuard())
+    avaliableCycles(req): any[]{
+        req.User
         return this.timesheetService.getAvaliableCycles();
     }
 

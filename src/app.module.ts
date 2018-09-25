@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TimesheetModule} from './modules/timesheet.module';
+import { AuthModule } from 'modules/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { TimesheetModule} from './modules/timesheet.module';
       synchronize: true,
     }),
     TimesheetModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
