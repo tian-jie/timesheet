@@ -15,6 +15,9 @@ export class Timesheet {
     @Column('int')
     project: number;
 
+    @Column({ length: 10})
+    cycle: string;
+
     @Column('int')
     unit: number;
 
