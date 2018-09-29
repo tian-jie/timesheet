@@ -39,6 +39,10 @@ export class TimesheetService {
         return timesheetView;
     }
 
+    /**
+     * 将timesheetView的数据转换成timesheet的数据保存到数据库里
+     * @param timesheetViews 
+     */
     async save(timesheetViews: TimesheetView[]) {
 
         var timesheets = [];

@@ -24,9 +24,9 @@ export class TimesheetController {
 
     @Post('/save')
     //    @UseGuards(AuthGuard('jwt'))
-    async save(@Body() timesheetView: TimesheetView): Promise<any> {
+    async save(@Body() timesheetViews: TimesheetView[]): Promise<any> {
         // will use pipe for global validation....
-
+        this.timesheetService.save(timesheetViews);
 
         return {};
     }
