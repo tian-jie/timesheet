@@ -1,9 +1,0 @@
-{
-    "type": "mongodb",
-    "host": "vm-online.com",
-    "port": 27017,
-    "database": "timesheet",
-    "entities": ["./src/**/**.entity{.ts,.js}"],
-    "synchronize": true,
-    "useNewUrlParser": true
-}
