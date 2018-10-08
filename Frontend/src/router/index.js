@@ -7,11 +7,11 @@ const vueRouter = new Router({
   // mode: 'history',
   routes: [
     {
-      path: '/task',
-      name: 'TaskList',
-      component: resolve => require(['@/components/Views/Task/TaskList'], resolve),
+      path: '/index',
+      name: 'Timesheet',
+      component: resolve => require(['@/components/Views/Timesheet/Timesheet'], resolve),
       meta: {
-        title: '优行'
+        title: 'timesheet'
       }
     }
   ],

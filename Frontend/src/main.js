@@ -25,7 +25,6 @@ import 'vue-awesome/icons/refresh'
 import Icon from 'vue-awesome/components/Icon'
 
 Vue.config.productionTip = false
-Vue.use(toast)
 Vue.component('icon', Icon)
 /* eslint-disable no-new */
 new Vue({
@@ -33,15 +32,5 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>',
-  created: function () {
-    var performanceLoggingStr = JSON.stringify(window.performance.timing)
-    var performanceLogging = JSON.parse(performanceLoggingStr)
-    performanceLogging.referer = 'lccp'
-    performanceLogging.title = 'performance logging'
-    performanceLogging.type = 'log'
-    httpClient.post(`/lccp/TrackingLog/Performance`, performanceLogging).then(response => {
-      // console.log('performance logging result: ' + JSON.stringify(response))
-    })
-  }
+  template: '<App/>'
 })

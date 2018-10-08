@@ -1,0 +1,61 @@
+.container {
+  text-align: left;
+  width: 1080px;
+  margin: auto;
+  margin-top: 25px;
+  
+  .header {
+    background-color: #F8FAF7;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+
+    .period-select {
+      float: right;
+      margin-left: 10px;
+    }
+  }
+
+  .main {
+    background-color: white;
+    height: 200px;
+    padding: 20px;
+
+    .project-row {
+      line-height: 45px;
+
+      .project-name {
+        width: 200px;
+      }
+
+      input {
+        width: 35px;
+      }
+
+      span {
+        display: inline-block;
+        margin-right: 12px;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      input[type="number"]{
+        -moz-appearance: textfield;
+      }
+    }
+  }
+
+  .footer {
+    background-color: #F9F9F9;
+    border-radius: 0 0 20px 20px;
+    padding: 20px;
+
+    .button {
+      text-align: center;
+      display: inline-block;
+      width: 100px;
+      padding: 5px 0px;
+    }
+  }
+}

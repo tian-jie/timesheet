@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const httpClient = axios.create({
-  // baseURL: ''
+  baseURL: 'http://localhost:3001'
 })
 
 // 拦截响应response，并做一些错误处理

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Param, Render, Res, UseGuards, Req, Body } from '@nestjs/common';
+import { Controller, Get, Post, All, Options, HttpCode, Param, Render, Res, UseGuards, Req, Body } from '@nestjs/common';
 import { TimesheetService } from '../services/timesheet.service';
 import { TimesheetView } from '../viewModels/Timesheet.viewmodel'
 import { AuthGuard } from '@nestjs/passport';
@@ -22,7 +22,7 @@ export class TimesheetController {
         return units;
     }
 
-    @Post('/save')
+    @All('/save')
     //    @UseGuards(AuthGuard('jwt'))
     async save(@Body() timesheetViews: TimesheetView[]): Promise<any> {
         // will use pipe for global validation....

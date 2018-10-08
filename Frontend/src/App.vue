@@ -6,22 +6,11 @@
 
 <script>
 export default {
-  name: 'App',
-  beforeMount () {
-    const hashStr = location.hash
-    const reg = /sr-summary|patient-share|schedule-share|no-permission/
-    if (!reg.test(hashStr)) {
-      this.$store.dispatch('getUser')
-      this.$store.dispatch('hasWatchedGuide')
-    }
-  }
+  name: 'App'
 }
 </script>
 
 <style>
-html,body,#app {
-  height: 100%;
-}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
