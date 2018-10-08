@@ -22,7 +22,7 @@ export class TimesheetController {
         return units;
     }
 
-    @All('/save')
+    @Post('/save')
     //    @UseGuards(AuthGuard('jwt'))
     async save(@Body() timesheetViews: TimesheetView[]): Promise<any> {
         // will use pipe for global validation....

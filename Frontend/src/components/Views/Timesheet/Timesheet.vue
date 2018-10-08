@@ -24,10 +24,10 @@
     <div>
       <p class="project-row" v-for="(timesheet,index) in timesheets" :key="index">
         <span class="project-name">{{timesheet.ProjectName}}</span>
-        <span v-for="(unit,unitIndex) in timesheet.Units" :key="unitIndex">
-          <input type="number" v-model="timesheets[index].Units[unitIndex].unit" />
+        <span v-for="(unit,unitIndex) in timesheet.units" :key="unitIndex">
+          <input type="number" v-model="timesheets[index].units[unitIndex].unit" />
         </span>
-        <span>{{totalTime(timesheet.Units)}}</span>
+        <span>{{totalTime(timesheet.units)}}</span>
       </p>
     </div>
   </div>
@@ -40,6 +40,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import httpClient from '../../../store/common/httpClient'
+const qs = require('qs');
 export default {
   name: 'TaskList',
   components: {
@@ -52,19 +53,19 @@ export default {
       timesheets : [{
         project: 0,
         ProjectName: 'Inhouse Onboarding',
-        Units: []
+        units: []
       },{
         project: 1,
         ProjectName: 'Company',
-        Units: []
+        units: []
       },{
         project: 2,
         ProjectName: 'Pet Project',
-        Units: []
+        units: []
       },{
         project: 3,
         ProjectName: 'Bucket List Tool',
-        Units: []
+        units: []
       }]
     }
   },
@@ -88,7 +89,7 @@ export default {
             unit: 0
           })
         }
-        this.timesheets[i].Units = result
+        this.timesheets[i].units = result
       }
     },
     totalTime (units) {
@@ -106,14 +107,13 @@ export default {
         this.timesheets[i].userId = '1'
         this.timesheets[i].cycle = date.getFullYear() + 
         (month >= 10 ? month : ('0' + month)) + (this.selected == '下半月' ? '02' : '01')
-        for (let j = 0; j < this.timesheets[i].Units.length; j++) {
-          this.timesheets[i].Units[j].date =  date.getFullYear() + 
+        for (let j = 0; j < this.timesheets[i].units.length; j++) {
+          this.timesheets[i].units[j].date =  date.getFullYear() + 
           (month >= 10 ? month : ('0' + month)) + 
-          (this.timesheets[i].Units[j].date >= 10 ? this.timesheets[i].Units[j].date :('0' + this.timesheets[i].Units[j].date) )
+          (this.timesheets[i].units[j].date >= 10 ? this.timesheets[i].units[j].date :('0' + this.timesheets[i].units[j].date) )
         }
       }
-      console.log(this.timesheets)
-      httpClient.post('/save', this.timesheets).then(response => {
+      httpClient.post('/timesheet/save', this.timesheets).then(response => {
         console.log(response)
       })
     }

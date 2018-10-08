@@ -11,11 +11,19 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      //跨域请求代理
+      '/api':{
+        target: "http://localhost:3001",
+        changeOrigin:true,
+        pathRewrite:{
+          '^/api':'/'
+        }
+      }
     },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8085, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8089, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

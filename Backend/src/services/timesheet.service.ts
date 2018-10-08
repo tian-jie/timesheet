@@ -44,8 +44,8 @@ export class TimesheetService {
      * @param timesheetViews 
      */
     async save(timesheetViews: TimesheetView[]) {
-
         var timesheets = [];
+        
         timesheetViews.forEach(function (timesheetView) {
             timesheetView.units.forEach(function (unit, index, array) {
                 if (unit.unit > 0) {
@@ -60,7 +60,7 @@ export class TimesheetService {
                 }
             });
         });
-
+        console.log(timesheets);
         this.timesheetRepository.save(timesheets);
     }
     // async findByUser(userid: string): Promise<any[]> {
