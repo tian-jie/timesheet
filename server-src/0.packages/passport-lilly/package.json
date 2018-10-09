@@ -1,0 +1,20 @@
+{
+  "name": "passport-lilly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "debug": "^3.0.1",
+    "node-fetch": "^1.7.2",
+    "jsonwebtoken": "^7.4.3",
+    "jwk-to-pem": "^1.2.6",
+    "atob": "^2.0.3",
+    "btoa": "^1.1.2",
+    "passport-strategy": "^1.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
