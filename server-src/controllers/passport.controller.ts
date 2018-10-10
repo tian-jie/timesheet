@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Request, Response } from "@nestjs/common";
 import passport from "passport";
-import { IRequest, IResponse } from "../1.core/shared/interfaces";
+import { IRequest, IResponse } from "../core/shared/interfaces";
 
 @Controller()
 export class PassportController {
@@ -36,10 +36,5 @@ export class PassportController {
     passport.authenticate("lilly")(request, response, () => {
       response.redirect("/test");
     });
-  }
-
-  @Get("test")
-  public test(@Request() request: IRequest, @Response() response: IResponse) {
-    return "test";
   }
 }

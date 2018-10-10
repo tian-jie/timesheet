@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
-import { Strategy } from "../0.packages/passport-lilly";
-import { IRequest } from "../1.core/shared/interfaces";
 import { LILLY_STRATEGY_CONFIG } from "../configs";
+import { IRequest } from "../core/shared/interfaces";
+import { Strategy } from "../packages/passport-lilly";
 
 @Injectable()
 export class LillyStrategyService extends PassportStrategy(Strategy) {

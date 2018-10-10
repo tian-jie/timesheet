@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { readFileAsString } from "../1.core/utils";
+import { readFileAsString } from "../core/utils";
 
 const {
   env: {

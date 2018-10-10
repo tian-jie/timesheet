@@ -1,19 +1,20 @@
 import { Module } from "@nestjs/common";
-import { DatabaseModule } from "./1.core/modules/database";
+import { DATABASE_CONFIG } from "./configs";
+import { PassportController } from "./controllers";
+import { TestController } from "./controllers/test.controller";
+import { DatabaseModule } from "./core/modules/database";
 import {
   PageEntity,
   RoleEntity,
   UserEntity,
-} from "./1.core/modules/system/entities";
-import { DATABASE_CONFIG } from "./configs";
-import { PassportController } from "./controllers";
+} from "./core/modules/system/entities";
 import { LillyStrategyService } from "./services";
 
 const entities = [PageEntity, RoleEntity, UserEntity];
 const providers = [LillyStrategyService];
 
 @Module({
-  controllers: [PassportController],
+  controllers: [TestController, PassportController],
   imports: [DatabaseModule.forRoot(DATABASE_CONFIG, entities)],
   providers,
 })

@@ -9,11 +9,10 @@ import compression from "compression";
 import cookie from "cookie-parser";
 import session from "express-session";
 import helmet from "helmet";
-import { Logger } from "./1.core/logger";
-import { ENVIRONMENT_ENUM } from "./1.core/shared/enums";
-import { getPath } from "./1.core/utils";
 import { AppModule } from "./app.module";
 import { APP_CONFIG } from "./configs";
+import { ENVIRONMENT_ENUM } from "./core/shared/enums";
+import { getPath } from "./core/utils";
 
 async function bootstrap() {
   try {
