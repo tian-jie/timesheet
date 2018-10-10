@@ -16,7 +16,7 @@ export const DATABASE_CONFIG: ConnectionOptions = {
     `${__dirname}./../1.core/modules/system/entities/**.entity{.ts,.js}`,
     `${__dirname}./../entities/**.entity{.ts,.js}`,
   ],
-  extra: DATABASE_INSTANCE !== undefined ? { instanceName: DATABASE_INSTANCE } : {},
+  extra: { instanceName: DATABASE_INSTANCE },
   host: DATABASE_HOST,
   logging: true,
   password: DATABASE_PASSWORD,

@@ -1,25 +1,45 @@
-import { Controller, Get, Request, Response } from "@nestjs/common";
+import { Controller, Get, Post, Request, Response } from "@nestjs/common";
 import passport from "passport";
-import { PREFIX_PATH_ENUM } from "../1.core/shared/enums";
+import { IRequest, IResponse } from "../1.core/shared/interfaces";
 
-@Controller(`${PREFIX_PATH_ENUM.V1}/passport`)
+@Controller()
 export class PassportController {
-  @Get("local/login")
-  public async localLogin(@Request() request, @Response() response) {
+  @Post("login")
+  public async localLogin(
+    @Request() request: IRequest,
+    @Response() response: IResponse,
+  ) {
     passport.authenticate("local")(request, response, () => {
-      response.redirect("/");
+      response.redirect("/test");
     });
   }
 
-  @Get("lilly/login")
-  public async lillyLogin(@Request() request, @Response() response) {
-    passport.authenticate("lilly")(request, response, () => {
-      response.redirect("/");
-    });
-  }
-
-  @Get("logout")
+  @Post("logout")
   public async logout() {
     return "logout";
+  }
+
+  @Get("auth/lilly/login")
+  public async lillyLogin(
+    @Request() request: IRequest,
+    @Response() response: IResponse,
+  ) {
+    passport.authenticate("lilly")(request, response);
+  }
+
+  // @Get("auth/lilly/callback")
+  @Get("auth/callback")
+  public async lillyCallback(
+    @Request() request: IRequest,
+    @Response() response: IResponse,
+  ) {
+    passport.authenticate("lilly")(request, response, () => {
+      response.redirect("/test");
+    });
+  }
+
+  @Get("test")
+  public test(@Request() request: IRequest, @Response() response: IResponse) {
+    return "test";
   }
 }

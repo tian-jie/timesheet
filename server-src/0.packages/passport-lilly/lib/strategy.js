@@ -15,16 +15,18 @@ function Strategy(options, verify) {
 
   options = options || {};
   this.name = "lilly";
-  this.callbackPath = options.callbackPath;
+  this.redirectUri = options.redirectUri;
   this.successRedirect = options.successRedirect;
   this.clientId = options.clientId;
   this.clientSecret = options.clientSecret;
   this.nonce = options.nonce;
   this.scope = options.scope;
   this.issuer = options.issuer;
-  this.authorizationURL = options.authorizationURL || `${options.issuer}/as/authorization.oauth2`;
+  this.authorizationURL =
+    options.authorizationURL || `${options.issuer}/as/authorization.oauth2`;
   this.tokenURL = options.tokenURL || `${options.issuer}/as/token.oauth2`;
-  this.profileURL = options.profileURL || `${options.issuer}/idp/userinfo.openid`;
+  this.profileURL =
+    options.profileURL || `${options.issuer}/idp/userinfo.openid`;
   this.verify = verify;
 
   passport.Strategy.call(this, options);
@@ -38,7 +40,7 @@ util.inherits(Strategy, passport.Strategy);
 Strategy.prototype.authenticate = function(req, options) {
   // eslint-disable-line
   const self = this;
-  if (req.path === this.callbackPath) {
+  if (req.path === this.redirectUri) {
     self
       .tokenEndpoint(req)
       .then((response) => {
@@ -48,7 +50,8 @@ Strategy.prototype.authenticate = function(req, options) {
         req.session.id_token = response.id_token;
         var date = new Date();
         // date.setTime(date.getTime() + response.expires_in*1000)
-        req.session.expired_date = date.getTime() + response.expires_in * 1000 - 5 * 60 * 1000;
+        req.session.expired_date =
+          date.getTime() + response.expires_in * 1000 - 5 * 60 * 1000;
         return response.id_token;
       })
       .then((idToken) => self.verifyToken(idToken, req)) // verify the id token using JWKS algorithm
@@ -134,9 +137,18 @@ Strategy.prototype.verifyToken = function(idToken, req) {
         console.log(`SSO nonce recieved: ${result.nonce}`);
       }
       assert.ok(!!result, "SSO Callback: validation is passed");
-      assert.ok(result && result.nonce === this.nonce, "SSO Callback: nounces are equal");
-      assert.ok(result && result.aud === this.clientId, "SSO Callback: clientIds are equal");
-      assert.ok(result && result.iss === this.issuer, "SSO Callback: issuers are equal");
+      assert.ok(
+        result && result.nonce === this.nonce,
+        "SSO Callback: nounces are equal",
+      );
+      assert.ok(
+        result && result.aud === this.clientId,
+        "SSO Callback: clientIds are equal",
+      );
+      assert.ok(
+        result && result.iss === this.issuer,
+        "SSO Callback: issuers are equal",
+      );
       if (
         result &&
         // Check that all the JWT verified info matches our configurated info
@@ -169,11 +181,15 @@ Strategy.prototype.tokenRequest = function(req, callbackURL) {
 
 Strategy.prototype.tokenEndpoint = function(req) {
   debug("getting id_token");
-  return this.getAuthCallbackURL(req).then((callbackURL) => this.tokenRequest(req, callbackURL));
+  return this.getAuthCallbackURL(req).then((callbackURL) =>
+    this.tokenRequest(req, callbackURL),
+  );
 };
 
 Strategy.prototype.redirectToSuccess = function(req) {
-  return this.getAuthSuccessURL(req).then((successURL) => this.redirect(successURL));
+  return this.getAuthSuccessURL(req).then((successURL) =>
+    this.redirect(successURL),
+  );
 };
 
 Strategy.prototype.redirectToAuth = function redirectToAuth(req) {
@@ -192,15 +208,19 @@ Strategy.prototype.redirectToAuth = function redirectToAuth(req) {
 
 Strategy.prototype.getAuthCallbackURL = function getAuthCallbackURL(req) {
   return new Promise((resolve) => {
-    const protocol = req.get("X-Forwarded-Proto") ? req.get("X-Forwarded-Proto") : req.protocol;
-    const callbackURL = `${protocol}://${req.hostname}${this.callbackPath}`;
+    const protocol = req.get("X-Forwarded-Proto")
+      ? req.get("X-Forwarded-Proto")
+      : req.protocol;
+    const callbackURL = `${protocol}://${req.hostname}${this.redirectUri}`;
     resolve(callbackURL);
   });
 };
 
 Strategy.prototype.getAuthSuccessURL = function getAuthSuccessURL(req) {
   return new Promise((resolve) => {
-    const protocol = req.get("X-Forwarded-Proto") ? req.get("X-Forwarded-Proto") : req.protocol;
+    const protocol = req.get("X-Forwarded-Proto")
+      ? req.get("X-Forwarded-Proto")
+      : req.protocol;
     const successURL = `${protocol}://${req.hostname}${this.successRedirect}`;
     resolve(successURL);
   });

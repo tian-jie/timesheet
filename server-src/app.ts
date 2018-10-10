@@ -17,7 +17,14 @@ import { APP_CONFIG } from "./configs";
 
 async function bootstrap() {
   try {
-    const { ENVIRONMENT, HTTPS_KEY, HTTPS_CERT, PORT, COOKIE_SECRET, SESSION_SECRET } = APP_CONFIG;
+    const {
+      ENVIRONMENT,
+      HTTPS_KEY,
+      HTTPS_CERT,
+      PORT,
+      COOKIE_SECRET,
+      SESSION_SECRET,
+    } = APP_CONFIG;
     let options: NestApplicationOptions = {};
     let port = PORT;
     if (ENVIRONMENT === ENVIRONMENT_ENUM.DEVELOPMENT) {
