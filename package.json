@@ -28,10 +28,10 @@
     "lodash": "^4.17.10",
     "mssql": "^4.1.0",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
     "passport-lilly": "file:server-src/packages/passport-lilly",
+    "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.12",
-    "rxjs": "^6.0.0",
+    "rxjs": "^6.3.3",
     "typeorm": "^0.2.7"
   },
   "devDependencies": {

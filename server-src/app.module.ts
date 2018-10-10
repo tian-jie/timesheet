@@ -8,10 +8,10 @@ import {
   RoleEntity,
   UserEntity,
 } from "./core/modules/system/entities";
-import { LillyStrategyService } from "./services";
+import { LillyStrategyService, LocalStrategyService } from "./services";
 
 const entities = [PageEntity, RoleEntity, UserEntity];
-const providers = [LillyStrategyService];
+const providers = [LillyStrategyService, LocalStrategyService];
 
 @Module({
   controllers: [TestController, PassportController],
