@@ -1,5 +1,5 @@
 import { Column, Entity } from "typeorm";
-import { BaseFieldEntity } from "../../../shared/base-field.entity";
+import { BaseFieldEntity } from "../core/shared/base-field.entity";
 
 @Entity({ schema: "system", name: "pages" })
 export class PageEntity extends BaseFieldEntity {

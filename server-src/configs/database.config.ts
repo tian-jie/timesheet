@@ -12,10 +12,7 @@ const {
 
 export const DATABASE_CONFIG: ConnectionOptions = {
   database: DATABASE_NAME,
-  entities: [
-    `${__dirname}./../core/modules/system/entities/**.entity{.ts,.js}`,
-    `${__dirname}./../entities/**.entity{.ts,.js}`,
-  ],
+  entities: [`${__dirname}./../entities/**.entity{.ts,.js}`],
   extra: { instanceName: DATABASE_INSTANCE },
   host: DATABASE_HOST,
   logging: true,

@@ -1,5 +1,5 @@
 import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
-import { BaseFieldEntity } from "../../../shared/base-field.entity";
+import { BaseFieldEntity } from "../core/shared/base-field.entity";
 import { PageEntity } from "./page.entity";
 
 @Entity({ schema: "system", name: "roles" })

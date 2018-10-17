@@ -11,6 +11,7 @@ import session from "express-session";
 import helmet from "helmet";
 import { AppModule } from "./app.module";
 import { APP_CONFIG } from "./configs";
+import { ExceptionModule, HttpExceptionFilter } from "./core/modules/exception";
 import { ENVIRONMENT_ENUM } from "./core/shared/enums";
 import { getPath } from "./core/utils";
 
@@ -33,6 +34,7 @@ async function bootstrap() {
       }
     }
     const app = await NestFactory.create(AppModule, options);
+    const exceptionModule = app.select(ExceptionModule);
 
     app.set("trust proxy", true);
 
@@ -48,6 +50,8 @@ async function bootstrap() {
       }),
     );
     app.useStaticAssets(getPath("client"));
+
+    app.useGlobalFilters(exceptionModule.get(HttpExceptionFilter));
 
     await app.listen(port);
   } catch (error) {

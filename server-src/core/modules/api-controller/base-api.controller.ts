@@ -6,7 +6,7 @@ import { IResult } from "../../shared/interfaces";
 import { ToNumberPipe } from "../../shared/pipes";
 import { createResult } from "../../utils";
 
-export abstract class ApiController<Entity extends ObjectLiteral> {
+export abstract class BaseApiController<Entity extends ObjectLiteral> {
   constructor(private readonly repositoryService: RepositoryService<Entity>) {}
 
   public async findAndCount(): Promise<IResult> {
