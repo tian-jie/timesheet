@@ -1,6 +1,10 @@
+import { addController, addRoutes } from "../api-controller.utils";
+import { API_CONTROLLER_ROUTES_CONFIG } from "../configs";
 import { IApiControllerConfig } from "../interfaces";
 
 export function ApiController(config: IApiControllerConfig) {
-  // tslint:disable-next-line:no-empty
-  return (target) => {};
+  return (target) => {
+    addController(target, config);
+    addRoutes(target, config, API_CONTROLLER_ROUTES_CONFIG);
+  };
 }

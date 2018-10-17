@@ -1,4 +1,4 @@
 export interface IApiControllerConfig {
-  apiPrefix?: string;
-  prefix: string;
+  apiPrefix: string;
+  rootPrefix: string;
 }

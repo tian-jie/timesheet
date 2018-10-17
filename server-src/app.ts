@@ -26,7 +26,7 @@ async function bootstrap() {
     } = APP_CONFIG;
     let options: NestApplicationOptions = {};
     let port = PORT;
-    if (ENVIRONMENT === ENVIRONMENT_ENUM.DEVELOPMENT) {
+    if (ENVIRONMENT === ENVIRONMENT_ENUM.LOCAL) {
       if (HTTPS_KEY !== undefined && HTTPS_CERT !== undefined) {
         options = { httpsOptions: { key: HTTPS_KEY, cert: HTTPS_CERT } };
         port = 443;

@@ -13,14 +13,14 @@ export const API_CONTROLLER_ROUTES_CONFIG: IApiControllerRouteConifg[] = [
     path: "",
   },
   {
-    action: "findOneByFilter",
-    method: REQUEST_METHOD_ENUM.GET,
-    path: "one",
-  },
-  {
     action: "findOneById",
     method: REQUEST_METHOD_ENUM.GET,
     path: ":id",
+  },
+  {
+    action: "findOneByFilter",
+    method: REQUEST_METHOD_ENUM.GET,
+    path: "one",
   },
   {
     action: "create",
@@ -38,14 +38,14 @@ export const API_CONTROLLER_ROUTES_CONFIG: IApiControllerRouteConifg[] = [
     path: "",
   },
   {
-    action: "updateOneByFilter",
-    method: REQUEST_METHOD_ENUM.PUT,
-    path: "one",
-  },
-  {
     action: "updateOneById",
     method: REQUEST_METHOD_ENUM.PUT,
     path: ":id",
+  },
+  {
+    action: "updateOneByFilter",
+    method: REQUEST_METHOD_ENUM.PUT,
+    path: "one",
   },
   {
     action: "delete",
@@ -53,13 +53,13 @@ export const API_CONTROLLER_ROUTES_CONFIG: IApiControllerRouteConifg[] = [
     path: "",
   },
   {
-    action: "deleteOneByFilter",
-    method: REQUEST_METHOD_ENUM.DELETE,
-    path: "one",
-  },
-  {
     action: "deleteOneById",
     method: REQUEST_METHOD_ENUM.DELETE,
     path: ":id",
+  },
+  {
+    action: "deleteOneByFilter",
+    method: REQUEST_METHOD_ENUM.DELETE,
+    path: "one",
   },
 ];

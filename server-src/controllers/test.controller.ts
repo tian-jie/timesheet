@@ -1,6 +1,7 @@
 import { Controller, Get, Request, Response } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
+import { RepositoryService } from "../core/modules/api-controller";
 import { UserEntity } from "../core/modules/system/entities";
 import { IRequest, IResponse } from "../core/shared/interfaces";
 
@@ -16,8 +17,7 @@ export class TestController {
     @Request() request: IRequest,
     @Response() response: IResponse,
   ) {
-    // tslint:disable-next-line:no-unused-expression
-    this.userRepository;
+    const user = await this.userRepository.find();
     return "test";
   }
 }
