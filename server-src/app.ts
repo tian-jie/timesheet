@@ -12,6 +12,7 @@ import helmet from "helmet";
 import { AppModule } from "./app.module";
 import { APP_CONFIG } from "./configs";
 import { ExceptionModule, HttpExceptionFilter } from "./core/modules/exception";
+import { LoggerService } from "./core/modules/logger";
 import { ENVIRONMENT_ENUM } from "./core/shared/enums";
 import { getPath } from "./core/utils";
 
@@ -25,7 +26,9 @@ async function bootstrap() {
       COOKIE_SECRET,
       SESSION_SECRET,
     } = APP_CONFIG;
-    let options: NestApplicationOptions = {};
+    let options: NestApplicationOptions = {
+      logger: LoggerService,
+    };
     let port = PORT;
     if (ENVIRONMENT === ENVIRONMENT_ENUM.LOCAL) {
       if (HTTPS_KEY !== undefined && HTTPS_CERT !== undefined) {
@@ -54,6 +57,7 @@ async function bootstrap() {
     app.useGlobalFilters(exceptionModule.get(HttpExceptionFilter));
 
     await app.listen(port);
+    LoggerService.log("fasfasfas");
   } catch (error) {
     throw error;
   }

@@ -3,7 +3,10 @@ import { readFileAsString } from "../core/utils";
 
 const {
   env: {
+    DEBUG_FOLDER,
+    DEBUG_LEVEL,
     ENVIRONMENT,
+    PASS_URLS,
     PORT,
     OPENSHIFT_NODEJS_PORT,
 
@@ -33,7 +36,10 @@ const {
 } = process;
 
 export const APP_CONFIG = {
+  DEBUG_FOLDER: _.toString(DEBUG_FOLDER),
+  DEBUG_LEVEL: _.toString(DEBUG_LEVEL),
   ENVIRONMENT: _.toString(ENVIRONMENT),
+  PASS_URLS: _.toString(PASS_URLS),
   PORT: _.toNumber(OPENSHIFT_NODEJS_PORT || PORT),
 
   HTTPS_CERT: readFileAsString(HTTPS_CERT_PATH),

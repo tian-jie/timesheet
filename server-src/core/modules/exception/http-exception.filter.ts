@@ -4,6 +4,7 @@ import {
   ExceptionFilter,
   HttpException,
 } from "@nestjs/common";
+import _ from "lodash";
 import { HTTP_STATUS_CODE } from "../../shared/enums";
 import { IResponse } from "../../shared/interfaces";
 import { createResult } from "../../utils";
