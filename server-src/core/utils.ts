@@ -8,14 +8,15 @@ import { LoggerService } from "./modules/logger";
 import { HTTP_STATUS_CODE } from "./shared/enums";
 import { IResult } from "./shared/interfaces";
 
-const { DEBUG_FOLDER, DEBUG_LEVEL } = APP_CONFIG;
+// const { DEBUG_FOLDER, DEBUG_LEVEL } = APP_CONFIG;
+
 const rootPath = process.cwd();
 
 log4js.configure({
   appenders: {
     app: {
       alwaysIncludePattern: true,
-      filename: DEBUG_FOLDER,
+      filename: "/logs",
       pattern: "yyyy-MM-dd.log",
       type: "dateFile",
     },
@@ -23,7 +24,7 @@ log4js.configure({
   categories: {
     default: {
       appenders: ["app"],
-      level: DEBUG_LEVEL,
+      level: "all",
     },
   },
 });

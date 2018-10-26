@@ -57,7 +57,6 @@ async function bootstrap() {
     app.useGlobalFilters(exceptionModule.get(HttpExceptionFilter));
 
     await app.listen(port);
-    LoggerService.log("fasfasfas");
   } catch (error) {
     throw error;
   }
